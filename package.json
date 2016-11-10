@@ -1,0 +1,30 @@
+{
+  "name": "gcs",
+  "version": "1.0.0",
+  "description": "Gago Cloud Service",
+  "main": "./lib/js/index.js",
+  "types": "./lib/definitions/index.d.ts",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "http://git.gagogroup.cn/dataplatform/cloud-service.git"
+  },
+  "author": "Frank Lin",
+  "license": "MIT",
+  "dependencies": {
+    "ali-oss": "^4.4.4",
+    "co": "^4.6.0",
+    "node-aliyun-dms": "git+http://git.gagogroup.cn/dataplatform/node-aliyun-dms.git#1.0.3"
+  },
+  "devDependencies": {
+    "@types/node": "^6.0.45",
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-typescript": "^3.0.2",
+    "gulp-clean": "^0.3.2",
+    "run-sequence": "^1.2.2",
+    "merge2": "^1.0.2",
+    "typescript": "^2.0.3"
+  }
+}
