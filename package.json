@@ -1,6 +1,6 @@
 {
   "name": "gcs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gago Cloud Service",
   "main": "./lib/js/index.js",
   "types": "./lib/definitions/index.d.ts",
@@ -14,7 +14,7 @@
   "dependencies": {
     "ali-oss": "^4.4.4",
     "co": "^4.6.0",
-    "node-aliyun-dms": "git+http://git.gagogroup.cn/dataplatform/node-aliyun-dms.git#1.0.3"
+    "node-aliyun-dms": "git+http://gagodata:gagobigdata77809@git.gagogroup.cn/dataplatform/node-aliyun-dms.git#1.0.3"
   },
   "devDependencies": {
     "@types/node": "^6.0.45",
