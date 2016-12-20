@@ -1,9 +1,9 @@
 // Copyright 2016 Frank Lin (lin.xiaoe.f@gmail.com). All rights reserved.
 // Use of this source code is governed a license that can be found in the LICENSE file.
 
-import {Aliyun} from "./aliyun";
+import {Aliyun} from './aliyun';
 
-const co = require("co");
+const co = require('co');
 
 /**
  * Provides base services for ali-oss.

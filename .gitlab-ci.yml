@@ -1,0 +1,13 @@
+stages:
+  - lint
+  - notification
+
+tslint:
+  stage: lint
+  script:
+    - sh ./bin/tslint.sh
+
+send_change_log:
+  stage: notification
+  script:
+    - node ./lib/js/src/tools/sendchangelog.js
