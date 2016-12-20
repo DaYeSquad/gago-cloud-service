@@ -19,7 +19,8 @@ export class BaseEmailService {
         'accessid': Aliyun.ACCESS_ID,
         'accesskey': Aliyun.ACCESS_SECRET
       });
-      dms.sendSingleMail('gago@gagodata.cn', true, 0, toAddress, fromAlias, subject, htmlBody, undefined, (error: any, res: any) => {
+      dms.sendSingleMail('gago@gagodata.cn', true, 0, toAddress, fromAlias, subject,
+        BaseEmailService.escapeInvalidChars_(htmlBody), undefined, (error: any, res: any) => {
         if (error) {
           reject(error);
         } else {
@@ -27,5 +28,18 @@ export class BaseEmailService {
         }
       });
     });
+  }
+
+  /**
+   * Aliyun does not allow to use brackets in content.
+   * @param content Email content.
+   * @returns {string} Escaped content.
+   * @private
+   */
+  static escapeInvalidChars_(content: string): string {
+    // escape brackets
+    let escapedContent: string = content.replace(/\(/g, '（');
+    escapedContent = escapedContent.replace(/\)/g, '）');
+    return escapedContent;
   }
 }
