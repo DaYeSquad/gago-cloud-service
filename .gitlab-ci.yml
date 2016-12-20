@@ -10,4 +10,5 @@ tslint:
 send_change_log:
   stage: notification
   script:
+    - npm install
     - node ./lib/js/tools/sendchangelog.js
