@@ -10,4 +10,4 @@ tslint:
 send_change_log:
   stage: notification
   script:
-    - node ./lib/js/src/tools/sendchangelog.js
+    - node ./lib/js/tools/sendchangelog.js
