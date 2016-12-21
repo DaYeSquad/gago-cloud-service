@@ -1,3 +1,10 @@
+# 1.1.1 (2016.12.22.)
+
+### Features
+
+* **完善了 BaseEmailService:** 修正了在发送 email 之后丢失 requestId 的 bug。
+
+
 # 1.1.0 (2016.12.20.)
 
 ### Features

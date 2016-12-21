@@ -1,6 +1,6 @@
 {
   "name": "gcs",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Gago Cloud Service",
   "main": "./lib/js/index.js",
   "types": "./lib/definitions/index.d.ts",

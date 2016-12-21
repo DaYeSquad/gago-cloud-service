@@ -23,3 +23,7 @@ cloud-service 是将佳格数据平台中用到的云服务的部分代码分离
 # 测试
 
 `npm test`
+
+# OWNER
+
+@林潇毅 (lin.xiaoe.f@gmail.com || linxiaoyi@gagogroup.com)
