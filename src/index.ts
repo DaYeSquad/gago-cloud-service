@@ -5,6 +5,6 @@
  * gcs 主要用于维护佳格数据平台使用的云服务的部分的代码和业务。
  */
 
-export * from "./service/aliyun";
-export * from "./service/baseemailservice";
-export * from "./service/boxservice";
+export * from './service/aliyun';
+export * from './service/baseemailservice';
+export * from './service/boxservice';

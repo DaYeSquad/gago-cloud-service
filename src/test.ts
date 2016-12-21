@@ -1,8 +1,8 @@
 // Copyright 2016 Frank Lin (lin.xiaoe.f@gmail.com). All rights reserved.
 // Use of this source code is governed a license that can be found in the LICENSE file.
 
-import {BaseEmailService} from "./service/baseemailservice";
-import {BoxService} from "./service/boxservice";
+import {BaseEmailService} from './service/baseemailservice';
+import {BoxService} from './service/boxservice';
 
 /**
  * 测试邮件服务，发送完之后去邮箱里看看
