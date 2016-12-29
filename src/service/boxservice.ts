@@ -77,14 +77,14 @@ export class BoxService {
    * @param objectKey Object key used in ali-oss.
    * @returns {Promise<number>} Status code, should be 200 if success or 500 fail.
    */
-  static async downloadFileToOss(bucket: string, objectKey: string, localPath: string): Promise<number> {
+  static async downloadFileToOss(bucket: string, objectKey: string, localPath: string): Promise<any> {
     return new Promise<number>((resolve, reject) => {
       co(function* () {
         let ossClient: any = Aliyun.getOssClient(bucket);
         const result: any = yield ossClient.get(objectKey, localPath);
         resolve(result['res']['statusCode']);
       }).catch(function (err: any) {
-        resolve(500);
+        reject(err);
       });
     });
   }
