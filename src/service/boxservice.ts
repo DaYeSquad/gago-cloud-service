@@ -88,4 +88,30 @@ export class BoxService {
       });
     });
   }
+
+  static async getObjectUrl(bucket: string, objectKey: string, baseUrl?: string): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      try {
+        let ossClient: any = Aliyun.getOssClient(bucket);
+        const url: string = ossClient.getObjectUrl(objectKey);
+        resolve(url);
+      } catch (e) {
+        reject(e)
+      }
+    });
+  }
+
+  static async list(bucket: string): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      try {
+        let ossClient: any = Aliyun.getOssClient(bucket);
+        co(function* () {
+          const fileList:any = yield ossClient.list();
+          resolve(fileList);
+        });
+      } catch (e) {
+        reject(e)
+      }
+    });
+  }
 }

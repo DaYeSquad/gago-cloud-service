@@ -1,3 +1,10 @@
+# 1.1.3 (2017.03.14.)
+
+### Features
+
+* **获取所有bucket文件列表 bucket.list** BoxService
+* **获取文件url bucket.getObjectUrl** BoxService
+
 # 1.1.2 (2016.12.29.)
 
 ### Features
