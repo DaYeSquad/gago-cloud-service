@@ -12,7 +12,7 @@ export class OssQuery {
   delimiter: string;
   maxKeys: string|number;
 
-  toJSON () {
+  toJSON() {
     return {
       'prefix': this.prefix,
       'marker': this.marker,
@@ -36,7 +36,7 @@ export class OssSignatureUrlOptionsResponse {
   contentType: string;
   contentDisposition: string;
   cacheControl: string;
-  toJSON () {
+  toJSON() {
     return {
       'content-type': this.contentType,
       'content-disposition': this.contentDisposition,
