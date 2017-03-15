@@ -1,3 +1,16 @@
+# 1.1.3 (2017.03.14.)
+
+### Features
+
+* **获取所有bucket文件列表 bucket.list** BoxService
+* **获取文件url bucket.getObjectUrl** BoxService
+
+# 1.1.2 (2016.12.29.)
+
+### Features
+
+* **封装了使用阿里云 oss 下载文件的功能** BoxService
+
 # 1.1.1 (2016.12.22.)
 
 ### Features

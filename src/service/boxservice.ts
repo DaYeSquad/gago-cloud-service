@@ -69,4 +69,49 @@ export class BoxService {
       });
     });
   }
+
+  /**
+   * Download file to ali-oss.
+   * @param localPath Download file save localPath.
+   * @param bucket Bucket name.
+   * @param objectKey Object key used in ali-oss.
+   * @returns {Promise<number>} Status code, should be 200 if success or 500 fail.
+   */
+  static async downloadFileToOss(bucket: string, objectKey: string, localPath: string): Promise<any> {
+    return new Promise<number>((resolve, reject) => {
+      co(function* () {
+        let ossClient: any = Aliyun.getOssClient(bucket);
+        const result: any = yield ossClient.get(objectKey, localPath);
+        resolve(result['res']['statusCode']);
+      }).catch(function (err: any) {
+        reject(err);
+      });
+    });
+  }
+
+  static async getObjectUrl(bucket: string, objectKey: string, baseUrl?: string): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      try {
+        let ossClient: any = Aliyun.getOssClient(bucket);
+        const url: string = ossClient.getObjectUrl(objectKey);
+        resolve(url);
+      } catch (e) {
+        reject(e)
+      }
+    });
+  }
+
+  static async list(bucket: string): Promise<any> {
+    return new Promise<any>((resolve, reject) => {
+      try {
+        let ossClient: any = Aliyun.getOssClient(bucket);
+        co(function* () {
+          const fileList:any = yield ossClient.list();
+          resolve(fileList);
+        });
+      } catch (e) {
+        reject(e)
+      }
+    });
+  }
 }
