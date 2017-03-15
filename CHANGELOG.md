@@ -4,6 +4,8 @@
 
 * **获取所有bucket文件列表 bucket.list** BoxService
 * **获取文件url bucket.getObjectUrl** BoxService
+* **获取私有读文件url bucket.signatureUrl** BoxService
+* **添加OssFile模型** ossfile
 
 # 1.1.2 (2016.12.29.)
 
