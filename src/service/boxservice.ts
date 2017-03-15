@@ -2,7 +2,7 @@
 // Use of this source code is governed a license that can be found in the LICENSE file.
 
 import {Aliyun} from './aliyun';
-import {OssFile} from "../module/ossfile";
+import {OssFile} from '../module/ossfile';
 
 const co = require('co');
 
@@ -104,7 +104,7 @@ export class BoxService {
         const url: string = ossClient.getObjectUrl(objectKey);
         resolve(url);
       } catch (e) {
-        reject(e)
+        reject(e);
       }
     });
   }
@@ -123,7 +123,7 @@ export class BoxService {
         const url: string = ossClient.signatureUrl(objectKey);
         resolve(url);
       } catch (e) {
-        reject(e)
+        reject(e);
       }
     });
   }
@@ -149,10 +149,10 @@ export class BoxService {
         let ossClient: any = Aliyun.getOssClient(bucket);
         co(function* () {
           const fileList: any = yield ossClient.list();
-          resolve(fileList["objects"] as OssFile[]);
+          resolve(fileList['objects'] as OssFile[]);
         });
       } catch (e) {
-        reject(e)
+        reject(e);
       }
     });
   }
