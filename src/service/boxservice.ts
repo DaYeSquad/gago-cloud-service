@@ -2,7 +2,7 @@
 // Use of this source code is governed a license that can be found in the LICENSE file.
 
 import {Aliyun} from './aliyun';
-import {OssFile} from "../module/ossfile";
+import {OssFile, OssQuery, OssListOptions, OssSignatureUrlOptions} from '../module/ossfile';
 
 const co = require('co');
 
@@ -104,7 +104,7 @@ export class BoxService {
         const url: string = ossClient.getObjectUrl(objectKey);
         resolve(url);
       } catch (e) {
-        reject(e)
+        reject(e);
       }
     });
   }
@@ -116,14 +116,14 @@ export class BoxService {
    * @param optionss # see ali-oss docs.
    * @returns {Promise<string>}
    */
-  static async signatureUrl(bucket: string, objectKey: string, options?: any): Promise<string> {
+  static async signatureUrl(bucket: string, objectKey: string, options?: OssSignatureUrlOptions): Promise<string> {
     return new Promise<string>((resolve, reject) => {
       try {
         let ossClient: any = Aliyun.getOssClient(bucket);
         const url: string = ossClient.signatureUrl(objectKey);
         resolve(url);
       } catch (e) {
-        reject(e)
+        reject(e);
       }
     });
   }
@@ -143,16 +143,16 @@ export class BoxService {
    *
    * @returns {Promise<any>}
    */
-  static async list(bucket: string, query?: any, options?: any): Promise<OssFile[]> {
+  static async list(bucket: string, query?: OssQuery, options?: OssListOptions): Promise<OssFile[]> {
     return new Promise<OssFile[]>((resolve, reject) => {
       try {
         let ossClient: any = Aliyun.getOssClient(bucket);
         co(function* () {
-          const fileList: any = yield ossClient.list();
-          resolve(fileList["objects"] as OssFile[]);
+          const fileList: any = yield ossClient.list(query);
+          resolve(fileList['objects'] as OssFile[]);
         });
       } catch (e) {
-        reject(e)
+        reject(e);
       }
     });
   }
