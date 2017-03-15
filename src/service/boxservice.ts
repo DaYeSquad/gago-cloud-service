@@ -2,6 +2,7 @@
 // Use of this source code is governed a license that can be found in the LICENSE file.
 
 import {Aliyun} from './aliyun';
+import {OssFile} from "../module/ossfile";
 
 const co = require('co');
 
@@ -89,6 +90,13 @@ export class BoxService {
     });
   }
 
+  /**
+   * public bucket. get object url
+   * @param baseUrl
+   * @param bucket Bucket name.
+   * @param objectKey Object key used in ali-oss.
+   * @returns {Promise<string>}
+   */
   static async getObjectUrl(bucket: string, objectKey: string, baseUrl?: string): Promise<string> {
     return new Promise<string>((resolve, reject) => {
       try {
@@ -101,13 +109,47 @@ export class BoxService {
     });
   }
 
-  static async list(bucket: string): Promise<any> {
-    return new Promise<any>((resolve, reject) => {
+  /**
+   * public bucket. get object url
+   * @param objectKey Object key used in ali-oss.
+   * @param bucket Bucket name.
+   * @param optionss # see ali-oss docs.
+   * @returns {Promise<string>}
+   */
+  static async signatureUrl(bucket: string, objectKey: string, options?: any): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      try {
+        let ossClient: any = Aliyun.getOssClient(bucket);
+        const url: string = ossClient.signatureUrl(objectKey);
+        resolve(url);
+      } catch (e) {
+        reject(e)
+      }
+    });
+  }
+
+  /**
+   * bucket objects
+   * @param bucket Bucket name.
+   * @param query{
+   *  prefix: string,
+   *  marker: string,
+   *  delimiter: string,
+   *  max-keys: string|number,
+   * } # see ali-oss docs
+   * @param options{
+   *  timeout: number
+   * } # see ali-oss docs
+   *
+   * @returns {Promise<any>}
+   */
+  static async list(bucket: string, query?: any, options?: any): Promise<OssFile[]> {
+    return new Promise<OssFile[]>((resolve, reject) => {
       try {
         let ossClient: any = Aliyun.getOssClient(bucket);
         co(function* () {
-          const fileList:any = yield ossClient.list();
-          resolve(fileList);
+          const fileList: any = yield ossClient.list();
+          resolve(fileList["objects"] as OssFile[]);
         });
       } catch (e) {
         reject(e)
