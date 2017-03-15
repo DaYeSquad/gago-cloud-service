@@ -10,10 +10,10 @@ export declare class OssQuery {
     delimiter: string;
     maxKeys: string | number;
     toJSON(): {
-        "prefix": string;
-        "marker": string;
-        "delimiter": string;
-        "max-keys": string | number;
+        'prefix': string;
+        'marker': string;
+        'delimiter': string;
+        'max-keys': string | number;
     };
 }
 export interface OssListOptions {
@@ -30,8 +30,8 @@ export declare class OssSignatureUrlOptionsResponse {
     contentDisposition: string;
     cacheControl: string;
     toJSON(): {
-        "content-type": string;
-        "content-disposition": string;
-        "cache-control": string;
+        'content-type': string;
+        'content-disposition': string;
+        'cache-control': string;
     };
 }

@@ -148,7 +148,8 @@ export class BoxService {
       try {
         let ossClient: any = Aliyun.getOssClient(bucket);
         co(function* () {
-          const fileList: any = yield ossClient.list(query);
+
+          const fileList: any = yield ossClient.list(query.toJSON());
           resolve(fileList['objects'] as OssFile[]);
         });
       } catch (e) {
