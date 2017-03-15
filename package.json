@@ -17,6 +17,9 @@
     "node-aliyun-dms": "git+http://gagodata:gagobigdata77809@git.azure.gagogroup.cn/sakura/node-aliyun-dms.git#1.0.3",
     "showdown": "^1.5.3"
   },
+  "publishConfig": {
+    "registry": "http://npmjs.gagogroup.cn"
+  },
   "devDependencies": {
     "@types/node": "^6.0.45",
     "@types/showdown": "^1.4.31",
