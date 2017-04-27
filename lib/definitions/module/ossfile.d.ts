@@ -16,7 +16,7 @@ export declare class OssQuery {
         'max-keys': string | number;
     };
 }
-export interface OssListOptions {
+export declare class OssListOptions {
     timeout: number;
 }
 export interface OssSignatureUrlOptions {
