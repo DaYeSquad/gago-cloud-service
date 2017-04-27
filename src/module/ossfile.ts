@@ -22,7 +22,7 @@ export class OssQuery {
   }
 }
 
-export interface OssListOptions {
+export class OssListOptions {
   timeout: number;
 }
 export interface OssSignatureUrlOptions {
