@@ -14,30 +14,43 @@ export class Aliyun {
    * 企业别名
    * @type {string} 企业别名
    */
-  static ENTERPRISE_ID: string = '1917856451201954';
+  static ENTERPRISE_ID: string = null;// = '1917856451201954';
 
   /**
    * 阿里云产品的 access id
    * @type {string}
    */
-  static ACCESS_ID: string = 'LTAIbuVHTjdhr0Nz';
+  static ACCESS_ID: string = null; // 'LTAIbuVHTjdhr0Nz';
 
   /**
    * 阿里云产品的 access secret
    * @type {string}
    */
-  static ACCESS_SECRET: string = '6obMhpcupEB8J287J2QG7EiCJTe4lj';
+  static ACCESS_SECRET: string = null; // '6obMhpcupEB8J287J2QG7EiCJTe4lj';
 
   /**
    * 阿里云存储 OSS 的地区
    * @type {string}
    */
-  static OSS_REGION: string = 'oss-cn-beijing';
+  static OSS_REGION: string = null; // 'oss-cn-beijing';
 
   /**
    * 返回一个 alioss 的对象
    */
   static getOssClient(bucket?: string): any {
+    if (Aliyun.ENTERPRISE_ID === undefined || Aliyun.ENTERPRISE_ID === null || Aliyun.ENTERPRISE_ID.length === 0){
+      throw new Error("GET_OSS_CLIENT_ERROR_ENTERPRISE_ID");
+    }
+    if (Aliyun.ACCESS_ID === undefined || Aliyun.ACCESS_ID === null || Aliyun.ACCESS_ID.length === 0){
+      throw new Error("GET_OSS_CLIENT_ERROR_ACCESS_ID");
+    }
+    if (Aliyun.ACCESS_SECRET === undefined || Aliyun.ACCESS_SECRET === null || Aliyun.ACCESS_SECRET.length === 0){
+      throw new Error("GET_OSS_CLIENT_ERROR_ACCESS_SECRET");
+    }
+    if (Aliyun.OSS_REGION === undefined || Aliyun.OSS_REGION === null || Aliyun.OSS_REGION.length === 0){
+      throw new Error("GET_OSS_CLIENT_ERROR_OSS_REGION");
+    }
+
     if (!Aliyun.ossClient_) {
       Aliyun.ossClient_ = new OSS({
         region: Aliyun.OSS_REGION,
@@ -49,4 +62,25 @@ export class Aliyun {
     Aliyun.ossClient_.useBucket(bucket);
     return Aliyun.ossClient_;
   }
+  static setConfig(config: AliyunConfig): void {
+    Aliyun.ENTERPRISE_ID = config.enterpriseId;
+    Aliyun.ACCESS_ID = config.accessId;
+    Aliyun.ACCESS_SECRET = config.accessSecret;
+    Aliyun.OSS_REGION = config.ossRegion;
+  }
+}
+
+export class AliyunConfig {
+  enterpriseId: string;
+  accessId: string;
+  accessSecret: string;
+  ossRegion: string;
+
+  constructor(enterpriseId: string, accessId: string, accessSecret: string, ossRegion: string){
+    this.enterpriseId = enterpriseId;
+    this.accessId = accessId;
+    this.accessSecret = accessSecret;
+    this.ossRegion = ossRegion;
+  }
+
 }
