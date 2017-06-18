@@ -38,19 +38,7 @@ export class Aliyun {
    * 返回一个 alioss 的对象
    */
   static getOssClient(bucket?: string): any {
-    if (Aliyun.ENTERPRISE_ID === undefined || Aliyun.ENTERPRISE_ID === null || Aliyun.ENTERPRISE_ID.length === 0){
-      throw new Error("GET_OSS_CLIENT_ERROR_ENTERPRISE_ID");
-    }
-    if (Aliyun.ACCESS_ID === undefined || Aliyun.ACCESS_ID === null || Aliyun.ACCESS_ID.length === 0){
-      throw new Error("GET_OSS_CLIENT_ERROR_ACCESS_ID");
-    }
-    if (Aliyun.ACCESS_SECRET === undefined || Aliyun.ACCESS_SECRET === null || Aliyun.ACCESS_SECRET.length === 0){
-      throw new Error("GET_OSS_CLIENT_ERROR_ACCESS_SECRET");
-    }
-    if (Aliyun.OSS_REGION === undefined || Aliyun.OSS_REGION === null || Aliyun.OSS_REGION.length === 0){
-      throw new Error("GET_OSS_CLIENT_ERROR_OSS_REGION");
-    }
-
+    Aliyun.verificationOssConfig();
     if (!Aliyun.ossClient_) {
       Aliyun.ossClient_ = new OSS({
         region: Aliyun.OSS_REGION,
@@ -62,11 +50,37 @@ export class Aliyun {
     Aliyun.ossClient_.useBucket(bucket);
     return Aliyun.ossClient_;
   }
-  static setConfig(config: AliyunConfig): void {
-    Aliyun.ENTERPRISE_ID = config.enterpriseId;
-    Aliyun.ACCESS_ID = config.accessId;
-    Aliyun.ACCESS_SECRET = config.accessSecret;
-    Aliyun.OSS_REGION = config.ossRegion;
+  static setConfig(config?: string): void;
+  static setConfig(config: AliyunConfig): void;
+  static setConfig(config?: any): void {
+    if (config instanceof AliyunConfig){
+      Aliyun.ENTERPRISE_ID = config.enterpriseId;
+      Aliyun.ACCESS_ID = config.accessId;
+      Aliyun.ACCESS_SECRET = config.accessSecret;
+      Aliyun.OSS_REGION = config.ossRegion;
+    }else {
+      Aliyun.ENTERPRISE_ID = process.env["ENTERPRISE_ID"];
+      Aliyun.ACCESS_ID = process.env["ACCESS_ID"];
+      Aliyun.ACCESS_SECRET = process.env["ACCESS_SECRET"];
+      Aliyun.OSS_REGION = process.env["OSS_REGION"];
+    }
+  }
+  static verificationConfig(): void {
+    if (Aliyun.ENTERPRISE_ID === undefined || Aliyun.ENTERPRISE_ID === null || Aliyun.ENTERPRISE_ID.length === 0){
+      throw new Error("GET_OSS_CLIENT_ERROR_ENTERPRISE_ID");
+    }
+    Aliyun.verificationOssConfig();
+  }
+  static verificationOssConfig(): void {
+    if (Aliyun.ACCESS_ID === undefined || Aliyun.ACCESS_ID === null || Aliyun.ACCESS_ID.length === 0){
+      throw new Error("GET_OSS_CLIENT_ERROR_ACCESS_ID");
+    }
+    if (Aliyun.ACCESS_SECRET === undefined || Aliyun.ACCESS_SECRET === null || Aliyun.ACCESS_SECRET.length === 0){
+      throw new Error("GET_OSS_CLIENT_ERROR_ACCESS_SECRET");
+    }
+    if (Aliyun.OSS_REGION === undefined || Aliyun.OSS_REGION === null || Aliyun.OSS_REGION.length === 0){
+      throw new Error("GET_OSS_CLIENT_ERROR_OSS_REGION");
+    }
   }
 }
 
