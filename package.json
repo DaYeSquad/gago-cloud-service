@@ -4,7 +4,9 @@
   "description": "Gago Cloud Service",
   "main": "./lib/js/index.js",
   "types": "./lib/definitions/index.d.ts",
-  "scripts": {},
+  "scripts": {
+    "test": "gulp ts;mocha ./lib/js/test/ --recursive;"
+  },
   "repository": {
     "type": "git",
     "url": "http://git.azure.gagogroup.cn/sakura/cloud-service.git"
@@ -21,14 +23,18 @@
     "registry": "http://npmjs.gagogroup.cn"
   },
   "devDependencies": {
+    "@types/chai": "^4.0.0",
+    "@types/mocha": "^2.2.41",
     "@types/node": "^6.0.45",
     "@types/showdown": "^1.4.31",
+    "chai": "^4.0.2",
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-rename": "^1.2.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-typescript": "^3.0.2",
     "merge2": "^1.0.2",
+    "mocha": "^3.4.2",
     "run-sequence": "^1.2.2",
     "typescript": "^2.0.3"
   }
