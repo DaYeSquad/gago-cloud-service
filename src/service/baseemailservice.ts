@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as Showdown from 'showdown';
 
-const DirectMailService = require('node-aliyun-dms');
+const DirectMailService = require('gago-aliyun-dms');
 
 import {Aliyun} from './aliyun';
 
