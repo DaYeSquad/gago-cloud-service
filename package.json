@@ -1,6 +1,6 @@
 {
   "name": "gago-cloud-service",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "Gago Cloud Service",
   "main": "./lib/js/index.js",
   "types": "./lib/definitions/index.d.ts",
