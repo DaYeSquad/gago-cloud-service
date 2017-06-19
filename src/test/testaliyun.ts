@@ -23,7 +23,6 @@ describe('Aliyun ', () => {
     };
 
     Aliyun.setConfig(config);
-    Aliyun.verificationConfig();
     let ossClient: any = Aliyun.getOssClient('gago-data');
     chai.expect(ossClient['options']['region']).to.equal('test_region');
     chai.expect(ossClient['options']['accessKeyId']).to.equal('test_accessKeyId');

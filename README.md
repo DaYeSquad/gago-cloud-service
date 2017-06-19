@@ -24,15 +24,9 @@ cloud-service 是将佳格数据平台中用到的云服务的部分代码分离
 
 `npm test`
 
-# OWNER
-
-@林潇毅 (lin.xiaoe.f@gmail.com || linxiaoyi@gagogroup.com)
-
 # Aliyun Config 建议在服务初始化是调用
 ## 使用AliyunConfig参数传入
- - `let config: AliyunConfig = new AliyunConfig("ENTERPRISE_ID", "ACCESS_ID", "ACCESS_SECRET", "OSS_REGION");`
- - `Aliyun.setConfig(config);`
- - `Aliyun.verificationConfig();`
+ - `Aliyun.setConfig({enterpriseId: "ENTERPRISE_ID", accessId: "ACCESS_ID", accessSecret: "ACCESS_SECRET", ossRegion: "OSS_REGION"});`
  
 **注:因为当前账号密码配置需要通过AliyunConfig传入或者通过ENV设置，现在调用上传下载使用ossClient需捕获错误三项**
 **1.GET_OSS_CLIENT_ERROR_ACCESS_ID 表示ACCESS_ID未配置为空**
