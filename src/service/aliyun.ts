@@ -50,27 +50,34 @@ export class Aliyun {
     Aliyun.ossClient_.useBucket(bucket);
     return Aliyun.ossClient_;
   }
-  static setConfig(config?: string): void;
-  static setConfig(config: AliyunConfig): void;
-  static setConfig(config?: any): void {
-    if (config instanceof AliyunConfig) {
-      Aliyun.ENTERPRISE_ID = config.enterpriseId;
-      Aliyun.ACCESS_ID = config.accessId;
-      Aliyun.ACCESS_SECRET = config.accessSecret;
-      Aliyun.OSS_REGION = config.ossRegion;
-    }else {
-      Aliyun.ENTERPRISE_ID = process.env['ENTERPRISE_ID'];
-      Aliyun.ACCESS_ID = process.env['ACCESS_ID'];
-      Aliyun.ACCESS_SECRET = process.env['ACCESS_SECRET'];
-      Aliyun.OSS_REGION = process.env['OSS_REGION'];
-    }
+
+  /**
+   * 传入AliyunConfigOptions实例,初始化阿里云账号密码配置
+   * @param config AliyunConfigOptions
+   * @returns void
+   */
+  static setConfig(config: AliyunConfigOptions): void {
+    Aliyun.ENTERPRISE_ID = config.enterpriseId;
+    Aliyun.ACCESS_ID = config.accessId;
+    Aliyun.ACCESS_SECRET = config.accessSecret;
+    Aliyun.OSS_REGION = config.ossRegion;
   }
+
+  /**
+   * 校验所有阿里云账号密码配置
+   * @returns void
+   */
   static verificationConfig(): void {
     if (Aliyun.ENTERPRISE_ID === undefined || Aliyun.ENTERPRISE_ID === null || Aliyun.ENTERPRISE_ID.length === 0) {
       throw new Error('GET_OSS_CLIENT_ERROR_ENTERPRISE_ID');
     }
     Aliyun.verificationOssConfig();
   }
+
+  /**
+   * 只校验所有阿里云Oss账号密码配置
+   * @returns void
+   */
   static verificationOssConfig(): void {
     if (Aliyun.ACCESS_ID === undefined || Aliyun.ACCESS_ID === null || Aliyun.ACCESS_ID.length === 0) {
       throw new Error('GET_OSS_CLIENT_ERROR_ACCESS_ID');
@@ -84,17 +91,13 @@ export class Aliyun {
   }
 }
 
-export class AliyunConfig {
+/**
+ * 阿里云账号密码配置
+ */
+export class AliyunConfigOptions {
   enterpriseId: string;
   accessId: string;
   accessSecret: string;
   ossRegion: string;
-
-  constructor(enterpriseId: string, accessId: string, accessSecret: string, ossRegion: string) {
-    this.enterpriseId = enterpriseId;
-    this.accessId = accessId;
-    this.accessSecret = accessSecret;
-    this.ossRegion = ossRegion;
-  }
-
 }
+

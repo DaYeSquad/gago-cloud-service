@@ -28,17 +28,7 @@ cloud-service 是将佳格数据平台中用到的云服务的部分代码分离
 
 @林潇毅 (lin.xiaoe.f@gmail.com || linxiaoyi@gagogroup.com)
 
-# Aliyun Config 两种方式 建议使用环境变量方式，在服务初始化是调用
-## 使用环境变量配置
- ```Shell
-# 设置环境变量
-export ENTERPRISE_ID=
-export ACCESS_ID=
-export ACCESS_SECRET= 
-export OSS_REGION=
-```
- - `Aliyun.setConfig();`
- - `Aliyun.verificationConfig();`
+# Aliyun Config 建议在服务初始化是调用
 ## 使用AliyunConfig参数传入
  - `let config: AliyunConfig = new AliyunConfig("ENTERPRISE_ID", "ACCESS_ID", "ACCESS_SECRET", "OSS_REGION");`
  - `Aliyun.setConfig(config);`

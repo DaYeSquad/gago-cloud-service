@@ -1,4 +1,8 @@
 // Copyright (c) 2016 (jw872505975@gmail.com). All rights reserved.
+
+/**
+ * 阿里云Oss文件类
+ */
 export interface OssFile {
   name: string;
   url: string;
@@ -6,6 +10,9 @@ export interface OssFile {
   size: number;
 }
 
+/**
+ * 阿里云Oss client.list()方法query类
+ */
 export class OssQuery {
   prefix: string;
   marker: string;
@@ -22,9 +29,16 @@ export class OssQuery {
   }
 }
 
+/**
+ * 阿里云Oss client.list()方法参数options的类
+ */
 export class OssListOptions {
   timeout: number;
 }
+
+/**
+ * 阿里云Oss client.signatureUrl()方法参数options的类
+ */
 export interface OssSignatureUrlOptions {
   expires: number;
   method: string;
@@ -32,6 +46,9 @@ export interface OssSignatureUrlOptions {
   response: OssSignatureUrlOptionsResponse;
 }
 
+/**
+ * 阿里云Oss client.list()方法参数options的Response的类
+ */
 export class OssSignatureUrlOptionsResponse {
   contentType: string;
   contentDisposition: string;

@@ -16,7 +16,7 @@
   "dependencies": {
     "ali-oss": "^4.4.4",
     "co": "^4.6.0",
-    "node-aliyun-dms": "git+http://gagodata:gagobigdata77809@git.azure.gagogroup.cn/sakura/node-aliyun-dms.git#1.0.3",
+    "gago-aliyun-dms": "^1.0.3",
     "showdown": "^1.5.3"
   },
   "publishConfig": {
