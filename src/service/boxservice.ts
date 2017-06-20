@@ -145,15 +145,13 @@ export class BoxService {
    */
   static async list(bucket: string, query?: OssQuery, options?: OssListOptions): Promise<OssFile[]> {
     return new Promise<OssFile[]>((resolve, reject) => {
-      try {
-        let ossClient: any = Aliyun.getOssClient(bucket);
-        co(function* () {
-          const fileList: any = yield ossClient.list(query.toJSON(), options);
-          resolve(fileList['objects'] as OssFile[]);
-        });
-      } catch (e) {
+      let ossClient: any = Aliyun.getOssClient(bucket);
+      co(function* () {
+        const fileList: any = yield ossClient.list(query.toJSON(), options);
+        resolve(fileList['objects'] as OssFile[]);
+      }).catch((e: Error) => {
         reject(e);
-      }
+      });
     });
   }
 }
